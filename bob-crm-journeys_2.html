@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOB_CRM_Journeys</title>
+<style>
+  :root{
+    --orange:#F15A22;
+    --navy:#0E2148;
+    --desk:#EFE9E3;
+    --line:#DCD2C9;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--desk);
+    font-family:Calibri,'Segoe UI',system-ui,sans-serif;
+    display:flex;flex-direction:column;
+  }
+
+  header{
+    background:var(--navy);border-bottom:4px solid var(--orange);
+    padding:0 24px;height:64px;display:flex;align-items:center;gap:12px;flex:none;
+  }
+  header svg{flex:none}
+  header h1{
+    margin:0;color:#fff;font-size:16px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  }
+  header p{margin:0;color:#9FB0CE;font-size:13px;white-space:nowrap}
+  @media(max-width:620px){header p{display:none}}
+
+  .bar{display:flex;justify-content:center;padding:20px;flex:none}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    background:var(--orange);color:#fff;border:0;cursor:pointer;
+    font-family:inherit;font-size:16px;font-weight:600;padding:13px 26px;border-radius:3px;
+    box-shadow:0 2px 10px -3px rgba(241,90,34,.65);
+    transition:background .18s ease,transform .18s ease;
+  }
+  .btn:hover{background:#FF6A2E;transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+
+  .viewer{
+    flex:1;min-height:420px;margin:0 20px 24px;background:#fff;
+    border:1px solid var(--line);border-radius:3px;overflow:hidden;
+    box-shadow:0 1px 4px rgba(14,33,72,.14),0 10px 28px -16px rgba(14,33,72,.3);
+  }
+  .viewer iframe{width:100%;height:100%;border:0;display:block}
+</style>
+</head>
+<body>
+
+<header>
+  <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
+    <path d="M13 2 L16.4 9.6 L24 13 L16.4 16.4 L13 24 L9.6 16.4 L2 13 L9.6 9.6 Z" fill="#F15A22"/>
+  </svg>
+  <h1>Bank of Baroda</h1>
+  <p>CRM RFP Submission Journeys</p>
+</header>
+
+<div class="bar">
+  <a class="btn" id="dl" href="BOB_CRM_Journeys.pdf" download="BOB_CRM_Journeys.pdf">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13.5h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Download BOB_CRM_Journeys
+  </a>
+</div>
+
+<div class="viewer">
+  <iframe id="frame" title="BOB_CRM_Journeys"></iframe>
+</div>
+
+<script>
+  /* Point this at your PDF. Relative path or full URL both work. */
+  var DOC_URL = "BOB_CRM_Journeys.pdf";
+
+  (function(){
+    var dl = document.getElementById("dl");
+    dl.href = DOC_URL;
+    dl.setAttribute("download", DOC_URL.split("/").pop().split("?")[0]);
+    /* FitH opens the file zoomed to the page width */
+    document.getElementById("frame").src = DOC_URL + "#view=FitH";
+  })();
+</script>
+</body>
+</html>
